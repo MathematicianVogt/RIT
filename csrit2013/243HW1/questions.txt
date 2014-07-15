@@ -1,0 +1,73 @@
+Lab 1: System Intro
+Name: Ryan Vogt
+
+1. When you first log in, what is the absolute path of your home directory?
+
+  /home/stu13/s11/rhv5251
+
+2. What command do you use to display the contents of your current
+working directory, such that it shows the difference between
+files and directories?
+
+    ls -F
+
+3. What command would you use to change your working directory from
+your home directory to the existing subdirectory Courses/?
+
+   cd Courses
+
+4. Within the Courses/ subdirectory, what command would you use to
+create the subdirectory CS4/ for this course?
+
+    mkdir CS4
+
+5. When warning.c is compiled as: 
+        gcc -c warning.c
+    There is no indication of any warnings/problems.
+    
+    a.) What compiler flag is used to enable the display of warnings?
+    
+       -Wall
+    
+    b.) Explain, in your own words, all the warnings in warning.c.
+    
+       1) used variable warning int b=a*5, this function isnt returning b which is used in the main method so linking cannot happen, as well as it is being created and using resources dedicated for this c program and isnt being used.
+	2)due to compute being a non void function, it is type int, it is required it returns a int type, this type would most likely in this situation make sense to return b
+	3)due to using std=c99, the main method can either be left empty, if that isnt the case it is required that two parameters are given, in this example only one is given. Should look like this int main(int argc, char *argv[])
+	4) int x is unsed in the function main, only y is being used in output, this goes againist the c99 standard
+    
+    c.) Fix warning.c so it compiles without warning and runs correctly.
+
+6. What compiler flag is used to compile C programs using the ISO C99 
+standard?
+
+    -std=c99
+   
+7. Put the four steps of compilation process into their proper order fromcd
+first to last.
+
+    A. Assemble
+    B. Link
+    C. Preprocess
+    D. Compile
+    
+    
+Pre-processing
+Compilation
+Assembly
+Linking
+    
+8. Given the program files main.c, circle.h and circle.c.
+    a.) What commands would you use to compile the source files
+        into object files?
+        
+      	gcc -c main.c circle.h circle.c
+        
+    b.) What command would you use to link the object files 
+        into an executable named broken?
+        
+	-o broken      	
+        
+    c.) Explain why the program compiles but does not link.
+    
+        It compiles because compilation only checks if i file is using structure correctly, it does no link however due to the fact to fully link, it must resolve a function call with body of code, and within that body of code all varibles have to be assigned to something in order to properly link. However the variable M_PI is not definied, therefore a linking cannot happen between this variable and an actual value. So this will not be able to link

@@ -1,0 +1,26 @@
+Enter Stores by Number
+64 3 2 1 5
+Optimal Position:  3.0(Strategy 2 ) 15.0(Strategy 3 ) 32.5(Strategy 1 )
+sum of distance must travel for mean method 98.0
+sum of distance must travel for median method 66.0
+sum of distance must travel for midpoint method 150.5
+Enter Stores by Number
+70 120 170 200
+Optimal Position:  135.0(Strategy 1 ) 140.0(Strategy 3 ) 145.0(Strategy 2 )
+sum of distance must travel for mean method 180.0
+sum of distance must travel for median method 180.0
+sum of distance must travel for midpoint method 180.0
+Enter Stores by Number
+5435 6 2 3 4 45 342 432 
+Optimal Position:  25.5(Strategy 2 ) 783.625(Strategy 3 ) 2718.5(Strategy 1 )
+sum of distance must travel for mean method 9302.75
+sum of distance must travel for median method 6239.0
+sum of distance must travel for midpoint method 20912.0
+Enter Stores by Number
+6 32 4 5 72
+Optimal Position:  6.0(Strategy 2 ) 23.8(Strategy 3 ) 38.0(Strategy 1 )
+sum of distance must travel for mean method 112.80000000000001
+sum of distance must travel for median method 95.0
+sum of distance must travel for midpoint method 139.0
+
+Median seems to be the best, both gives the least distance from 0 and has the least distance to travel from other stores

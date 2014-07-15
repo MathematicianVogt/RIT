@@ -1,0 +1,581 @@
+004e5476 » MathematicianVogt 
+2014-03-02 first		1	// Author Ryan Vogt
+2	//An implmentation of the points header file
+3	//to compile: to compile:	gcc -Wall -std=c99 -o point points.c
+4	
+5	#include <stdio.h>
+6	#include <string.h>
+7	#include "points.h"
+8	#include <stdlib.h>
+9	#include <ctype.h>
+10	
+8615feec » MathematicianVogt 
+2014-03-03 5		11	//A function that takes two points and returns a struct point that represents the vecotor coming out of orgin
+12	//Helper for the ccw function
+13	//@param a the struct point
+14	//@param b the struct point
+15	//@return vectorPoint a vector representation of the two points centered at the origin
+16	static struct Point makeVector(struct Point a, struct Point b)
+17	{
+18		int newXcor;
+19		int newYcor;
+20		struct Point vectorPoint;
+004e5476 » MathematicianVogt 
+2014-03-02 first		21	
+8615feec » MathematicianVogt 
+2014-03-03 5		22		if(a.y>b.y)
+23		{
+24		struct Point pivotPoint=a;
+25		newXcor=pivotPoint.x-b.x;
+26		newYcor=pivotPoint.y-b.y;
+004e5476 » MathematicianVogt 
+2014-03-02 first		27	
+28	
+29	
+8615feec » MathematicianVogt 
+2014-03-03 5		30		}
+31		else
+32		{
+33			struct Point pivotPoint=b;
+34	
+35			newXcor=pivotPoint.x-a.x;
+36			newYcor=pivotPoint.y-a.y;
+37	
+38		}
+39		vectorPoint.label='v';
+40		vectorPoint.x=newXcor;
+41		vectorPoint.y=newYcor;
+42	
+43		return vectorPoint;
+44	
+004e5476 » MathematicianVogt 
+2014-03-02 first		45	
+8615feec » MathematicianVogt 
+2014-03-03 5		46	
+47	
+48	}
+49	
+50	int ccw(struct Point p, struct Point q, struct Point r)
+51	{
+52		int crossProductCoeff;
+53		struct Point pq=makeVector(p,q);
+54		crossProductCoeff=pq.x*r.y-pq.y*r.x;
+55		return crossProductCoeff;	
+004e5476 » MathematicianVogt 
+2014-03-02 first		56	
+57	
+58	}
+59	
+60	void displayPoint(struct Point p){
+61	
+62	
+63	
+64	printf("%c: (%d,%d)",p.label,p.x,p.y);
+65	
+66	}
+67	
+68	
+cff05c34 » MathematicianVogt 
+2014-03-02 2		69	void displayPoints(struct Point points[], int numPoints){
+7d34acf9 » MathematicianVogt 
+2014-03-03 10		70		printf("\n%d\n",numPoints );
+bf97d3f6 » MathematicianVogt 
+2014-03-03 6		71		printf("Set of Points:\n");
+cff05c34 » MathematicianVogt 
+2014-03-02 2		72		for(int i=0; i<numPoints; i++)
+73		{
+7d34acf9 » MathematicianVogt 
+2014-03-03 10		74			
+75			printf("%c: (%d,%d)\n",points[i].label,points[i].x,points[i].y);
+cff05c34 » MathematicianVogt 
+2014-03-02 2		76	
+77		}
+e65e435e » MathematicianVogt 
+2014-03-03 9		78	printf("HIT");
+cff05c34 » MathematicianVogt 
+2014-03-02 2		79	
+80	
+81	}
+82	
+83	
+004e5476 » MathematicianVogt 
+2014-03-02 first		84	int equal(struct Point p1, struct Point p2)
+85	{
+86	
+cff05c34 » MathematicianVogt 
+2014-03-02 2		87		if(p1.x==p2.x && p1.y==p2.y)
+004e5476 » MathematicianVogt 
+2014-03-02 first		88		{
+89	
+cff05c34 » MathematicianVogt 
+2014-03-02 2		90			return 1;
+004e5476 » MathematicianVogt 
+2014-03-02 first		91	
+92		}
+93	
+cff05c34 » MathematicianVogt 
+2014-03-02 2		94		return 0;
+004e5476 » MathematicianVogt 
+2014-03-02 first		95	
+96	}
+97	int indexOf(struct Point p, struct Point points[], int numPoints)
+98	{
+cff05c34 » MathematicianVogt 
+2014-03-02 2		99		int indexOfMatch=0;
+100		for(int i=0;i<numPoints; i++)
+101		{
+102			struct Point currentStruct=points[i];
+103	
+104			if(currentStruct.x==p.x && currentStruct.y==p.y)
+105			{
+106	
+107				return indexOfMatch;
+108	
+109			}
+110	
+111			indexOfMatch++;
+112	
+113		}
+114		return -1;
+115	}
+116	
+117	
+118	struct Point leftmostPoint(struct Point points[], int numPoints)
+119	{
+120	
+121		struct Point currentSmallestStruct=points[0];
+122		for(int i=1; i<numPoints; i++)
+123		{
+124	
+125	
+126			struct Point current=points[i];
+127			if(current.x<currentSmallestStruct.x)
+128			{
+129	
+130				currentSmallestStruct=current;
+131	
+132	
+133	
+134			}
+135		}
+136	
+137	
+138		return currentSmallestStruct;
+139	}
+140	
+141	struct Point rightmostPoint(struct Point points[], int numPoints)
+142	{
+143	
+144	
+145		struct Point currentLargestStruct=points[0];
+146		for(int i=1; i<numPoints; i++)
+147		{
+148	
+149	
+150			struct Point current=points[i];
+151			if(current.x>currentLargestStruct.x)
+152			{
+153	
+154				currentLargestStruct=current;
+155	
+156	
+157	
+158			}
+159		}
+160	
+161	
+162		return currentLargestStruct;
+163	
+164	}
+165	
+166	struct Point furthestLeftPoint(struct Point a, struct Point z, struct Point points[], int numPoints)
+167	{
+168	
+169		struct Point currentSmallestxStruct;
+170		struct Point currentStruc;
+171		if(a.x<z.x)
+172		{
+173			currentSmallestxStruct=a;
+174	
+175	
+176		}
+177		else
+178		{
+179	
+180			currentSmallestxStruct=a;
+181	
+182	
+183		}
+184	
+185		for(int i =0; i<numPoints; i++)
+186		{
+187	
+188			currentStruc=points[i];
+189	
+190			if(currentStruc.x<currentSmallestxStruct.x)
+191			{
+192	
+193				currentSmallestxStruct=currentStruc;
+194	
+195			}
+004e5476 » MathematicianVogt 
+2014-03-02 first		196	
+197	
+cff05c34 » MathematicianVogt 
+2014-03-02 2		198	
+199		}
+200	
+201		return currentSmallestxStruct;
+004e5476 » MathematicianVogt 
+2014-03-02 first		202	
+203	}
+cff05c34 » MathematicianVogt 
+2014-03-02 2		204	
+205	
+f813e3dd » MathematicianVogt 
+2014-03-02 3		206	
+cff05c34 » MathematicianVogt 
+2014-03-02 2		207	int leftPointSet(struct Point a, struct Point z, struct Point points[], int numPoints, struct Point lps[])
+208	{
+f813e3dd » MathematicianVogt 
+2014-03-02 3		209		int numberOfPointsToTheLeft=0;
+210		int currentLpsele=0;
+cff05c34 » MathematicianVogt 
+2014-03-02 2		211		struct Point pivotX;
+212		if(a.x<z.x)
+213		{
+214	
+215			pivotX=a;
+216	
+217	
+218		}
+219		else
+220		{
+221	
+222	
+223			pivotX=z;
+224	
+225		}
+226		for(int i=0; i<numPoints; i++)
+227		{
+228	
+f813e3dd » MathematicianVogt 
+2014-03-02 3		229			struct Point currentOne=points[i];
+cff05c34 » MathematicianVogt 
+2014-03-02 2		230			if(currentOne.x<pivotX.x)
+231			{
+232	
+233				lps[currentLpsele]=currentOne;
+234				currentLpsele++;
+235				numberOfPointsToTheLeft++;
+236	
+237	
+238	
+239			}
+240	
+241	
+242	
+243	
+244		}
+245		return numberOfPointsToTheLeft;
+246	
+247	
+248	}
+249	
+f813e3dd » MathematicianVogt 
+2014-03-02 3		250	struct Point lowestPoint(struct Point points[], int numPoints)
+251	{	
+252	
+253		
+254		struct Point goodY[numPoints];
+255		int goodYEle=0;
+256		struct Point smallestY=points[0];
+257		for(int i=0; i<numPoints; i++)
+258		{
+259			struct Point currentStruc= points[i];
+260	
+261			if(currentStruc.y<smallestY.y)
+262			{
+263				goodYEle=0;
+264				memset(goodY, 0, sizeof(goodY));
+265				smallestY=currentStruc;
+266	
+267			}
+268	
+269			if(currentStruc.y==smallestY.y)
+270			{
+271	
+272				goodY[goodYEle]=currentStruc;
+273				goodY[goodYEle+1]=smallestY;
+274				goodYEle=goodYEle+2;
+275	
+276	
+277	
+278			}
+279	
+280	
+281	
+282		}
+283	
+284		if(goodY==NULL)
+285		{
+286	
+287	
+288			return smallestY;
+289	
+290		}
+291		else
+292		{
+293			struct Point smallestx=goodY[0];
+294			for(int i =1; i<goodYEle; i++)
+295			{
+296				struct Point currentStruc=points[i];
+297				if(currentStruc.x<smallestx.x)
+298				{
+299	
+300	
+301					smallestx=currentStruc;
+302	
+303	
+304				}
+305	
+306	
+307	
+308			}
+309			return smallestx;
+310	
+311	
+312		}
+313	
+314	
+315	
+316	
+317	
+318	
+319	
+320	
+321	
+322	
+323	}
+cff05c34 » MathematicianVogt 
+2014-03-02 2		324	
+325	
+004e5476 » MathematicianVogt 
+2014-03-02 first		326	int readPoints(struct Point points[])
+f813e3dd » MathematicianVogt 
+2014-03-02 3		327	{	char currentLabel;
+328		int currentX;
+329		int  currentY;
+330		int pointsEle=0;
+331		int counter=0;
+332		int inputCounter=1;
+004e5476 » MathematicianVogt 
+2014-03-02 first		333		char buff[MAX_LINE];
+bf97d3f6 » MathematicianVogt 
+2014-03-03 6		334		int numberOfPoints;
+004e5476 » MathematicianVogt 
+2014-03-02 first		335		printf("Number of points(3-100):");
+bf97d3f6 » MathematicianVogt 
+2014-03-03 6		336		if(fgets(buff, MAX_LINE, stdin))
+337		{
+f813e3dd » MathematicianVogt 
+2014-03-02 3		338	
+bf97d3f6 » MathematicianVogt 
+2014-03-03 6		339			numberOfPoints= atoi(buff);
+004e5476 » MathematicianVogt 
+2014-03-02 first		340	
+f813e3dd » MathematicianVogt 
+2014-03-02 3		341		if(numberOfPoints<MIN_POINTS || numberOfPoints>MAX_POINTS)
+004e5476 » MathematicianVogt 
+2014-03-02 first		342		{
+cff05c34 » MathematicianVogt 
+2014-03-02 2		343			printf("Number of points must be between 3 and 100.\n");
+004e5476 » MathematicianVogt 
+2014-03-02 first		344			return 0;
+345	
+346		}
+f813e3dd » MathematicianVogt 
+2014-03-02 3		347		
+348		while(counter<numberOfPoints)
+349		{
+350			if(inputCounter==1)
+351			{
+cff05c34 » MathematicianVogt 
+2014-03-02 2		352	
+f813e3dd » MathematicianVogt 
+2014-03-02 3		353				printf("Enter label (character): ");
+354				if(fgets(buff, MAX_LINE, stdin))
+355				{
+356	
+357					currentLabel=buff[0];
+358					inputCounter++;
+359	
+360				}
+361				else
+362				{
+363					printf("\nError reading point label.\n");
+364					return 0;
+365	
+366				}
+367				
+368			
+369			}
+370	
+371			else if(inputCounter==2)
+372			{
+373	
+374				printf("Enter x (int): ");
+375				if(fgets(buff, MAX_LINE, stdin))
+376				{
+377				currentX=atoi(buff);
+378				inputCounter++;
+379				}
+380				else
+381				{
+382					printf("\nError reading x coordinate.\n");
+383					return 0;
+384	
+385				}
+386	
+387	
+388	
+389	
+390	
+391			}
+392	
+393			else
+394			{
+395	
+396				printf("Enter y (int): ");
+397				if(fgets(buff, MAX_LINE, stdin))
+398				{
+399					currentY=atoi(buff);
+400				points[pointsEle].label=currentLabel;
+401				points[pointsEle].x=currentX;
+402				points[pointsEle].y=currentY;
+403				pointsEle++;
+404				inputCounter=1;
+405				counter++;
+406				}
+407				else
+408				{
+409	
+410					printf("\nError reading y coordinate.\n");
+411					return 0;
+412	
+413	
+414	
+415				}
+416	
+417			}
+418			
+419	
+420		}
+421	
+bf97d3f6 » MathematicianVogt 
+2014-03-03 6		422	
+423		
+424	
+425	
+426	
+427	
+428	
+429	
+430	
+431	
+432		}
+433		else
+434			{
+435					printf("\nError reading number of points.\n");
+436					return 0;
+437	
+438			}
+439		
+440	
+441	
+442		
+e65e435e » MathematicianVogt 
+2014-03-03 9		443		//printf("%d number of points\n",numberOfPoints );
+f813e3dd » MathematicianVogt 
+2014-03-02 3		444		return numberOfPoints;
+cff05c34 » MathematicianVogt 
+2014-03-02 2		445	
+004e5476 » MathematicianVogt 
+2014-03-02 first		446	
+447	
+448	
+cff05c34 » MathematicianVogt 
+2014-03-02 2		449	}
+450	
+451	void swap(int a, int b, struct Point points[], int numPoints)
+452	{
+453	
+454		
+455		if((a<0) || (b<0) || (a>numPoints-1) || (b>numPoints) || (a==b))
+456		{
+457	
+458	
+004e5476 » MathematicianVogt 
+2014-03-02 first		459	
+460	
+cff05c34 » MathematicianVogt 
+2014-03-02 2		461		}
+462	
+463		else{
+464			struct Point P1=points[a];
+465			struct Point P2=points[b];
+466			points[a]=P2;
+467			points[b]=P1;		
+468		}
+469	
+004e5476 » MathematicianVogt 
+2014-03-02 first		470	}
+471	
+472	
+f03778bf » MathematicianVogt 
+2014-03-03 8		473	/*int main( void ) {
+004e5476 » MathematicianVogt 
+2014-03-02 first		474	
+f813e3dd » MathematicianVogt 
+2014-03-02 3		475		struct Point myPoints[5];
+476		struct Point test;
+477		test.label='a';
+478		test.x=6;
+479		test.y=1;
+480		struct Point test1;
+481		test1.label='b';
+482		test1.x=10;
+483		test1.y=3;
+8615feec » MathematicianVogt 
+2014-03-03 5		484		struct Point test2;
+485		test2.label='c';
+f03778bf » MathematicianVogt 
+2014-03-03 8		486		test2.x=0;
+487		test2.y=0;
+f813e3dd » MathematicianVogt 
+2014-03-02 3		488		struct Point lps[5];
+489		int mypoints=readPoints(myPoints);
+490		displayPoints(myPoints,mypoints);
+491		printf("%d\n",indexOf(test,myPoints,mypoints));
+492		displayPoint(leftmostPoint(myPoints,mypoints));
+493		displayPoint(rightmostPoint(myPoints,mypoints));
+494		displayPoint(furthestLeftPoint(test,test1,myPoints,mypoints));
+495		int here=leftPointSet(test,test1,myPoints,mypoints,lps);
+496		displayPoints(lps,here);
+8615feec » MathematicianVogt 
+2014-03-03 5		497		printf("=====");
+498		displayPoint(lowestPoint(myPoints,mypoints));
+499		printf("============\n");
+500		displayPoint(makeVector(test1,test2));
+f03778bf » MathematicianVogt 
+2014-03-03 8		501		printf("%d\n",ccw(test,test2,test1));
+004e5476 » MathematicianVogt 
+2014-03-02 first		502			return( 0 );
+8615feec » MathematicianVogt 
+2014-03-03 5		503	}
+f03778bf » MathematicianVogt 
+2014-03-03 8		504	*/
+8615feec » MathematicianVogt 
+2014-03-03 5		505	
+cb4da237 » MathematicianVogt 
+2014-03-03 11		506	

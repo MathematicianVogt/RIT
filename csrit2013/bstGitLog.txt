@@ -1,0 +1,308 @@
+ 79f0329a » MathematicianVogt
+2014-03-14 Done 		1 	//@author Ryan Vogt
+		2 	//A Program that takes user input to make a binary search tree (slightly modiifed the tree can have multiple same values)
+		3 	//Then shows a post, pre and in order representation of the tree
+		4 	
+7104e911 » MathematicianVogt
+2014-03-13 first. 		5 	#include <stdio.h>
+		6 	#include <stdlib.h>
+		7 	#include <ctype.h>
+		8 	
+		9 	#define MAX_BUFF 100
+		10 	
+		11 	//defintion of a TreeNode structure
+		12 	//has three fields
+		13 	//data the data in this specific tree node
+		14 	//left a pointer to a left node to the treenode also a treenode
+		15 	//right a poiinter to a right node to the treenode also a treenode
+		16 	typedef struct TreeNode {
+		17 	int data;
+		18 	struct TreeNode* left;
+		19 	struct TreeNode* right;
+		20 	} TreeNode;
+		21 	
+		22 	//enum to regard a type of tree transversal for BST
+		23 	typedef enum {
+		24 	PREORDER,
+		25 	INORDER,
+		26 	POSTORDER
+		27 	} TraversalType;
+		28 	
+2946783a » MathematicianVogt
+2014-03-13 second 		29 	
+		30 	
+		31 	
+7104e911 » MathematicianVogt
+2014-03-13 first. 		32 	//takes a root which is the tree, and goes through the tree until the proper insert can take place
+		33 	//root, the refrence to the overall root
+		34 	// x the variable that is to be added to the tree
+		35 	void insert(TreeNode** root, const int x)
+		36 	{
+		37 	
+		38 	while(*root!=NULL)
+		39 	{
+		40 	if(x<=(*root)->data)
+		41 	{
+2946783a » MathematicianVogt
+2014-03-13 second 		42 	root=&((*root)->left);
+7104e911 » MathematicianVogt
+2014-03-13 first. 		43 	}
+		44 	else{
+2946783a » MathematicianVogt
+2014-03-13 second 		45 	root=&((*root)->right);
+7104e911 » MathematicianVogt
+2014-03-13 first. 		46 	}
+		47 	
+		48 	}
+		49 	
+		50 	*root=malloc(sizeof(TreeNode));
+		51 	(*root)->data=x;
+		52 	(*root)->left=NULL;
+		53 	(*root)->right=NULL;
+		54 	}
+		55 	
+79f0329a » MathematicianVogt
+2014-03-14 Done 		56 	//a function that takes a root, a list of leaves, and the number of leaves
+		57 	//-root the root of the BST, assumed to be first element of list
+		58 	//-elements holds all elements that will be placed in the tree
+		59 	//-count, the number of elements in the list elements
+		60 	void build_tree(TreeNode** root, const int elements[], const int count)
+		61 	{
+		62 	
+		63 	for(int i=0; i<count; i++)
+		64 	{
+		65 	insert(root,elements[i]);
+		66 	
+		67 	}
+		68 	
+		69 	
+		70 	
+		71 	}
+		72 	
+		73 	
+2946783a » MathematicianVogt
+2014-03-13 second 		74 	//takes a BST and prints it out using pre order, using recursion
+79f0329a » MathematicianVogt
+2014-03-14 Done 		75 	void preorder(const TreeNode* root)
+2946783a » MathematicianVogt
+2014-03-13 second 		76 	{
+		77 	
+		78 	
+79f0329a » MathematicianVogt
+2014-03-14 Done 		79 	if(root==NULL)
+2946783a » MathematicianVogt
+2014-03-13 second 		80 	{
+		81 	
+		82 	
+		83 	}
+		84 	else
+		85 	{
+		86 	printf("%d\n",root->data);
+		87 	preorder(root->left);
+		88 	preorder(root->right);
+		89 	}
+		90 	}
+		91 	//takes a BST starting with a root and prints it out using post order recursion
+79f0329a » MathematicianVogt
+2014-03-14 Done 		92 	void postorder(const TreeNode* root)
+2946783a » MathematicianVogt
+2014-03-13 second 		93 	{
+		94 	
+79f0329a » MathematicianVogt
+2014-03-14 Done 		95 	if(root==NULL)
+2946783a » MathematicianVogt
+2014-03-13 second 		96 	{
+		97 	
+		98 	
+		99 	}
+		100 	else
+		101 	{
+		102 	postorder(root->left);
+		103 	postorder(root->right);
+79f0329a » MathematicianVogt
+2014-03-14 Done 		104 	printf("%d\n",root->data );
+2946783a » MathematicianVogt
+2014-03-13 second 		105 	
+		106 	
+		107 	}
+		108 	
+		109 	}
+		110 	
+		111 	//takes a root of a BTS and prints it out in in-order with recursion
+79f0329a » MathematicianVogt
+2014-03-14 Done 		112 	void inorder(const TreeNode* root)
+2946783a » MathematicianVogt
+2014-03-13 second 		113 	{
+79f0329a » MathematicianVogt
+2014-03-14 Done 		114 	if(root==NULL)
+2946783a » MathematicianVogt
+2014-03-13 second 		115 	{
+		116 	
+		117 	}
+		118 	else
+		119 	{
+79f0329a » MathematicianVogt
+2014-03-14 Done 		120 	inorder(root->left);
+2946783a » MathematicianVogt
+2014-03-13 second 		121 	printf("%d\n",root->data);
+79f0329a » MathematicianVogt
+2014-03-14 Done 		122 	inorder(root->right);
+2946783a » MathematicianVogt
+2014-03-13 second 		123 	}
+		124 	
+		125 	}
+		126 	
+		127 	
+		128 	
+		129 	
+		130 	
+		131 	
+7104e911 » MathematicianVogt
+2014-03-13 first. 		132 	//travers through a tree using the root as a starting point based on a type of transversal
+		133 	//root, the BST
+		134 	//type the type of transversal to take place, based on ENUM value.
+		135 	void traverse(const TreeNode* root, const TraversalType type)
+		136 	{
+2946783a » MathematicianVogt
+2014-03-13 second 		137 	if(type==PREORDER)
+		138 	{
+		139 	printf("Preorder:\n");
+79f0329a » MathematicianVogt
+2014-03-14 Done 		140 	preorder(root);
+2946783a » MathematicianVogt
+2014-03-13 second 		141 	
+		142 	
+		143 	}
+		144 	if(type==INORDER)
+		145 	{
+		146 	printf("Inorder:\n");
+79f0329a » MathematicianVogt
+2014-03-14 Done 		147 	inorder(root);
+2946783a » MathematicianVogt
+2014-03-13 second 		148 	
+		149 	
+		150 	}
+		151 	if(type==POSTORDER)
+		152 	{
+		153 	printf("Postorder:\n");
+79f0329a » MathematicianVogt
+2014-03-14 Done 		154 	postorder(root);
+		155 	
+		156 	
+		157 	}
+		158 	
+		159 	
+		160 	
+		161 	}
+		162 	//takes a root of a tree and goes through the tree in post order in order to free the left, then right then root in order
+		163 	//to avoid memory leaks.
+		164 	void cleanup_tree(TreeNode* root)
+		165 	{
+		166 	
+		167 	if(root==NULL)
+		168 	{
+		169 	
+		170 	
+		171 	}
+		172 	else
+		173 	{
+		174 	cleanup_tree(root->left);
+		175 	cleanup_tree(root->right);
+		176 	free(root);
+7104e911 » MathematicianVogt
+2014-03-13 first. 		177 	
+		178 	
+2946783a » MathematicianVogt
+2014-03-13 second 		179 	}
+7104e911 » MathematicianVogt
+2014-03-13 first. 		180 	
+		181 	
+		182 	
+79f0329a » MathematicianVogt
+2014-03-14 Done 		183 	
+7104e911 » MathematicianVogt
+2014-03-13 first. 		184 	}
+		185 	
+		186 	//main method to make a bst from input
+		187 	int main(int argc, char *argv[])
+79f0329a » MathematicianVogt
+2014-03-14 Done 		188 	{	//check if user sent input that is good to make a tree
+7104e911 » MathematicianVogt
+2014-03-13 first. 		189 	if(argc<2)
+		190 	{
+		191 	
+		192 	
+		193 	printf("Usage: bst #\n");
+		194 	return 0;
+		195 	
+		196 	
+		197 	}
+		198 	else
+		199 	{
+79f0329a » MathematicianVogt
+2014-03-14 Done 		200 	
+7104e911 » MathematicianVogt
+2014-03-13 first. 		201 	if(atoi(argv[1])<=0)
+		202 	{
+		203 	
+		204 	printf("# must be greater than 0\n");
+2946783a » MathematicianVogt
+2014-03-13 second 		205 	
+7104e911 » MathematicianVogt
+2014-03-13 first. 		206 	return 0;
+		207 	
+		208 	}
+79f0329a » MathematicianVogt
+2014-03-14 Done 		209 	//if user sent good information go and create an array of inputs from user.
+7104e911 » MathematicianVogt
+2014-03-13 first. 		210 	char buff[MAX_BUFF];
+		211 	int numberOfInputs=atoi(argv[1]);
+		212 	int nodeinputs[numberOfInputs];
+		213 	int counter=0;
+		214 	printf("Enter %d integer values to place in tree:\n", numberOfInputs);
+79f0329a » MathematicianVogt
+2014-03-14 Done 		215 	//get inputs from the user
+7104e911 » MathematicianVogt
+2014-03-13 first. 		216 	while(counter<numberOfInputs)
+		217 	{
+		218 	fgets(buff,MAX_BUFF, stdin);
+		219 	nodeinputs[counter]=atoi(buff);
+		220 	counter++;
+		221 	
+		222 	}
+79f0329a » MathematicianVogt
+2014-03-14 Done 		223 	//show the user inputs
+7104e911 » MathematicianVogt
+2014-03-13 first. 		224 	printf("Input values:\n");	
+		225 	for(int i=0; i<numberOfInputs; i++)
+		226 	{
+		227 	
+		228 	printf("%d\n",nodeinputs[i]);
+		229 	
+		230 	
+		231 	}
+79f0329a » MathematicianVogt
+2014-03-14 Done 		232 	//build the tree and show the user the different representation of the trees
+7104e911 » MathematicianVogt
+2014-03-13 first. 		233 	TreeNode* myRoot=NULL;
+		234 	build_tree(&myRoot,nodeinputs,numberOfInputs);
+2946783a » MathematicianVogt
+2014-03-13 second 		235 	traverse(myRoot,PREORDER);
+		236 	traverse(myRoot,INORDER);
+		237 	traverse(myRoot,POSTORDER);
+79f0329a » MathematicianVogt
+2014-03-14 Done 		238 	cleanup_tree(myRoot);
+7104e911 » MathematicianVogt
+2014-03-13 first. 		239 	
+		240 	
+		241 	
+		242 	
+		243 	
+		244 	}
+		245 	
+		246 	
+		247 	
+		248 	
+		249 	
+		250 	}
+

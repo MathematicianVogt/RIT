@@ -1,0 +1,80 @@
+head	1.1;
+access;
+symbols;
+locks
+	rhv5251:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2013.11.15.00.13.11;	author rhv5251;	state Exp;
+branches;
+next	;
+
+
+desc
+@finished copy
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@
+//imports
+import java.lang.*;
+import java.util.*;
+/*
+ * ManyThreads.java
+ *
+ * Version:
+ *     $Id$
+ *
+ * Revisions:
+ *     $Log$
+ */
+ 
+
+
+
+public class ManyThreads extends Thread
+{
+
+private int threadNumber;
+public ManyThreads(int threadNumber)
+{
+
+this.threadNumber=threadNumber;
+
+}
+public void run()
+{
+    System.out.println("Hello I am thread " + threadNumber);
+
+
+}
+public static void main(String[] args)
+{   
+
+    ArrayList<ManyThreads> myThreads = new ArrayList<ManyThreads>();
+    for( int i=0; i<=Integer.parseInt(args[0]); i++)
+    {
+        myThreads.add(new ManyThreads(i));
+    
+    
+    }
+    Iterator<ManyThreads> it = myThreads.iterator();
+    while(it.hasNext())
+    {
+        ManyThreads thisThread=it.next();
+        thisThread.start();
+        
+    
+    }
+
+}
+
+}
+@

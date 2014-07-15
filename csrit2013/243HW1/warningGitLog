@@ -1,0 +1,15 @@
+ b2f3e8a0 » MathematicianVogt
+2014-02-03 Finished 		1 	#include <stdio.h>
+		2 	
+		3 	int compute(int a) {
+		4 	int b = a * 5;
+		5 	return b;
+		6 	}
+		7 	
+		8 	int main(void) {
+		9 	
+		10 	int y = compute(20);
+		11 	
+		12 	printf("%d\n", y);
+		13 	
+		14 	return 0;

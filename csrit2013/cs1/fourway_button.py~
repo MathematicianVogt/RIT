@@ -1,0 +1,75 @@
+"""
+    Use turtle graphics to draw a four way button graphic
+
+    file: four-way Button Graphic.py
+    Author: Andrea Denisse Benitez Quintana
+"""
+
+from turtle import *
+
+def initialize ():
+    """Initialize the turtle so that it is facing North with the pen up"""
+    up()
+    left(90)
+
+def drawBorder():
+    """Draw a circle for the outline of the face"""
+    backward(100)
+    right(90)
+    down()
+    circle(100)
+    up()
+    home()
+
+def drawCenter():
+    """Draw the circle in the middle"""
+    initialize()
+    backward(25)
+    right(90)
+    down()
+    circle(25)
+    up()
+    home()
+
+def drawTriangle():
+    """Draw the triangle next to the circle"""
+    down()
+    forward(50)
+    right(120)
+    forward(50)
+    right(120)
+    forward(50)
+    up()
+    home()
+
+def position4triangle():
+    """Move the turtle to begin drawing each triangle and draw it"""
+    initialize()
+    backward(40)
+    left(90)
+    forward(25)
+    left(180)
+    drawTriangle()
+    up()
+    home()
+    
+def drawTriangles():
+    """Draw 4 triangles around the center"""
+    position4triangle()
+    left(90)
+    position4triangle()
+    left(180)
+    position4triangle()
+    right(90)
+    position4triangle()
+    
+
+hideturtle()
+initialize()
+drawBorder()
+drawCenter()
+drawTriangles()
+input("Hit ENTER to finish the program")
+bye()
+
+

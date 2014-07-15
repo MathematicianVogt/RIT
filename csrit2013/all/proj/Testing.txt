@@ -1,0 +1,168 @@
+In this program i tested its ability in multiple different ways. The first process was to make sure that input and output streams were working correctly, because without correct user input or output it would be able to properly play the game. After input and output streams were created so that i had polymorphic input and output, i then looked towards checking that the input would be proper for the program with the specs given. After these were validated, i created the board and tested if the board worked properly containing both water objects as well and ship objects when the game started. From this i begin to make sure commands for the actual game would work for the user and the game would play itself. After i implemented all commands i begin to test the program to eliminate bugs that could happen from weird input files, or commands with weird arguements. After this was taken care of and the Battleship game worked as intended by the specs by not only implementing exceptions and polymorphism but also inheritence, i had considered the program to be fully tested and able to handle all situations that could possibly end in the program terminatle violtaly and instead make it not do so. 
+
+Here is an example of a test.
+INPUT FILE CONTAINS THIS CALLED ok.txt:
+5
+C C C E
+ H  E  D  E
+a a F a
+a j c j
+a g c g
+rhv5251@stones:~/Desktop/proj$ java Battleship 10 ok.txt
+  A B C D E F G H I J 
+A - - - - - - - - - -
+B - - - - - - - - - -
+C - - - - - - - - - -
+D - - - - - - - - - -
+E - - - - - - - - - -
+F - - - - - - - - - -
+G - - - - - - - - - -
+H - - - - - - - - - -
+I - - - - - - - - - -
+J - - - - - - - - - -
+ships
+  A B C D E F G H I J 
+A C - - - - - E - - D
+B C - - - - - E - - D
+C C - A A A - E - - D
+D C - - - B - - - - -
+E C - - - B - - - - -
+F C - - - B - - - - -
+G - - - - B - - - - -
+H - - - - B - - - - -
+I - - - - - - - - - -
+J - - - - - - - - - -
+fire a b
+Miss
+fire a a
+Hit
+fire b a
+Hit
+fire c a
+Hit
+fire d a
+Hit
+fire e a
+Hit
+fire f a
+Hit
+Sunk!
+stats
+Number of missiles fired: 7
+Number of hits: 6
+Number of misses: 1
+Hit ratio: 85.71428571428571
+Number of ships sunk: 1
+board
+  A B C D E F G H I J 
+A X O - - - - - - - -
+B X - - - - - - - - -
+C X - - - - - - - - -
+D X - - - - - - - - -
+E X - - - - - - - - -
+F X - - - - - - - - -
+G - - - - - - - - - -
+H - - - - - - - - - -
+I - - - - - - - - - -
+J - - - - - - - - - -
+fire c c
+Hit
+fire c d
+Hit
+fire c e
+Hit
+Sunk!
+stats
+Number of missiles fired: 10
+Number of hits: 9
+Number of misses: 1
+Hit ratio: 90.0
+Number of ships sunk: 2
+board
+  A B C D E F G H I J 
+A X O - - - - - - - -
+B X - - - - - - - - -
+C X - X X X - - - - -
+D X - - - - - - - - -
+E X - - - - - - - - -
+F X - - - - - - - - -
+G - - - - - - - - - -
+H - - - - - - - - - -
+I - - - - - - - - - -
+J - - - - - - - - - -
+fire a g
+Hit
+fire b g
+Hit
+fire c g
+Hit
+Sunk!
+stats
+Number of missiles fired: 13
+Number of hits: 12
+Number of misses: 1
+Hit ratio: 92.3076923076923
+Number of ships sunk: 3
+board
+  A B C D E F G H I J 
+A X O - - - - X - - -
+B X - - - - - X - - -
+C X - X X X - X - - -
+D X - - - - - - - - -
+E X - - - - - - - - -
+F X - - - - - - - - -
+G - - - - - - - - - -
+H - - - - - - - - - -
+I - - - - - - - - - -
+J - - - - - - - - - -
+fire j j
+Miss
+fire j z
+Illegal Coordinates
+fire a j
+Hit
+fire b j
+Hit
+fire c j
+Hit
+Sunk!
+stats
+Number of missiles fired: 17
+Number of hits: 15
+Number of misses: 2
+Hit ratio: 88.23529411764706
+Number of ships sunk: 4
+board
+  A B C D E F G H I J 
+A X O - - - - X - - X
+B X - - - - - X - - X
+C X - X X X - X - - X
+D X - - - - - - - - -
+E X - - - - - - - - -
+F X - - - - - - - - -
+G - - - - - - - - - -
+H - - - - - - - - - -
+I - - - - - - - - - -
+J - - - - - - - - - O
+fire d e
+Hit
+fire e e
+Hit
+fire f e
+Hit
+fire g e
+Hit
+fire h e
+Hit
+Sunk!
+You Win!
+Number of missiles fired: 22
+Number of hits: 20
+Number of misses: 2
+Hit ratio: 90.9090909090909
+Number of ships sunk: 5
+rhv5251@stones:~/Desktop/proj$ 
+
+
+
+

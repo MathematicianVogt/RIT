@@ -1,0 +1,76 @@
+		Computer Science for Transfers
+		Lab 1 - Activity 3 - Questions	 
+
+Your Name:		Ryan Vogt
+
+UNIX QUESTIONS 
+
+QUESTION 1: Describe two ways that you can log off the system.
+
+Answer: Exit and Logout
+
+QUESTION 2: Name one thing that you should never do with your password.
+
+Answer: Share it with other people
+
+QUESTION 3: How can you iconify a window?
+
+Answer: Minimize the window
+
+QUESTION 4: What command would you use to determine the current working
+directory?
+
+Answer: pwd
+
+QUESTION 5: How do you access the online Unix manual?  Using the Unix
+online manual find out what the cmp command does.  Give an example
+of how you would use cmp.
+
+Answer: Using the man commannd. The cmp command would be used to see if two files are the same such if you wanted to see if you had multiple instance of one file in a directory, then you would use this command
+
+QUESTION 6: What command would you use to find out the current time and
+date on a Unix system?
+
+Answer: date 
+
+QUESTION 7: Here is a filename pattern which includes some wildcards:
+
+	ab?
+
+Which of the file names in the list below does this pattern match?
+
+	Abc		abc		barb-calc	storage-a.c
+	a_b		abcabc		abaara		ab?bc
+
+Answer: abc
+
+QUESTION 8: Using the same set of file names from the previous
+questions, which names would match for the pattern
+	ab*
+
+Answer: abc,abcabc,abaara,ab?bc
+
+QUESTION 9: Suppose you run a long listing (ls -l) on a file
+and see the following permissions:
+
+	-rwxr--r--   1 csx          4841 Jul 24 09:56 index.html
+
+
+Who can read the file? 
+Answer: everybody on the system
+
+Who can write to the file?
+Answer: only owner of file
+
+Who can execute the file?
+Answer: only owner of the file
+Is this a file or a directory?
+Answer: file
+
+QUESTION 10: Suppose when you log in you get a message saying that you
+are over your quota for disk file storage, and must delete some files.
+What command would you use to find the directory in your account whose
+files occupy the most space?  Note:  The answer is NOT ls or
+quota!
+
+Answer: du .

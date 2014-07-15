@@ -1,0 +1,156 @@
+Homework: C code Performance Analysis with gprof 
+
+Name:Ryan Vogt
+
+These questions deal with the program in "fibo.c".
+
+Instructions
+------------
+
+a. Read this whole document before doing anything else.
+b. Save a copy of this file.
+c. Edit your copy and add your answers BELOW the word "ANSWER".
+	====================================================
+	DO NOT REMOVE THE LINE CONTAINING THE WORD "ANSWER".
+	====================================================
+d. Research to discover answers to the basic questions.
+	Hint: the man pages are useful.
+e. Commands to run are identified with a '==> ' prefix.
+d. Follow the sub-instructions in order; see inside the lines between the '---'.
+e. Do not execute the commands out of order.
+
+
+Questions -- 25 points
+---------
+
+1. (2 points)  What are the gcc compiler flags required to use the gprof tool?
+ANSWER:
+-pg
+
+------------
+Add the flags to the header.mak, create a Makefile with gmakemake and run make.
+------------
+
+
+2. (2 points)  What files does COMPILING fibo.c produce when you use the flags?
+ANSWER:
+Just fibo executable
+
+------------
+Run this command sequence:
+	==> fibo 1
+------------
+
+3. (2 points)  What new file(s) did executing the command produce?
+ANSWER:
+gmon.out
+
+------------
+Run this command sequence:
+	==> gprof fibo
+Study the long, annotated text output, and then run:
+	==> gprof -b -p -q fibo
+------------
+
+4. (2 points)  What time/call value for fiboRec did you get?
+ANSWER:
+	You should look for a heading similar to this, copy and paste in the 
+	entry for the function of interest.
+	(The time/call may be in ms/call or ns/call.)
+
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+100.00      1.18     1.18       39    30.26    30.26  fiboRec
+
+
+
+
+5. (2 points)  How many times was fiboRec called?
+Provide both the direct and the recursive values.
+ANSWER:
+535828510 
+39+535828510
+
+------------
+Run this command sequence:
+	==> fibo 2
+	==> gprof -b -p -q fibo
+------------
+
+6. (2 points)  What time/call value for fiboAccum did you get?
+
+------------
+Copy and paste the table whose headings look like this into your answer.
+------------
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ANSWER:
+ 0.00      0.00     0.00       39     0.00     0.00  fiboAccum
+  0.00      0.00     0.00       39     0.00     0.00  fiboR
+
+
+
+7. (1 points)  How many times was fiboAccum called?
+------------
+Provide both the direct and the recursive values.
+------------
+ANSWER:
+741
+780
+
+8. (1 points)  What file changed as a result of executing those commands?
+ANSWER:
+gmon.out
+
+9. (1 points)  Why did executing change that file?
+ANSWER:
+the gmon holds the lastest execution
+
+------------
+It is not always possible to achieve non-zero time measurements for a
+given function. Sometimes it is necessary to modify part of the program
+so that a measurement can be obtained. 
+------------
+
+10. (2 points)  How could you change the fibo.c program so that,
+	when you run the commands below, gprof will produce non-zero time
+	measurements for the fiboR, fiboIter, and fiboPhi functions?
+ANSWER:
+Run tests that use a bigger amount of computations are needed to complete the program in order to see how long it takes.
+
+
+------------
+Modify the program to obtain non-zero time measurements from gprof
+for the fiboR, fiboIter, and fiboPhi functions.
+Run this command sequence:
+	==> fibo 2
+	==> gprof -b -p -q fibo
+	==> fibo 4
+	==> gprof -b -p -q fibo
+	==> fibo 8
+	==> gprof -b -p -q fibo
+------------
+
+11. (8 points)  What are the results of the tests you just ran
+		for the fiboR, fiboIter, and fiboPhi functions?
+		Complete the table with data on these functions:
+		fiboR
+		fiboAccum
+		fiboIter
+		fiboPhi
+
+------------
+You will need to run 'fibo' multiple times.
+Run 'fibo' and record the results after each time you run 'fibo'.
+Be careful to record results AFTER running EACH fibo command.
+------------
+
+ANSWER:
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ns/call  ns/call  name    
+time   seconds   seconds    calls  ms/call  ms/call  name    
+32.00      1.68     1.68       39    43.08    43.08  fiboRec
+24.00	   1.52	    1.52       39    38.02    38.02  fiboAccum		
+15.00      1.34     1.34       39    31.78    31.78  fiboIter
+29.00      1.57     1.57       39    39.40   39.40   fiboPhi
+

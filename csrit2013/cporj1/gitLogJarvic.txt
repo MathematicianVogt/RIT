@@ -1,0 +1,134 @@
+8615feec » MathematicianVogt 
+2014-03-03 5		1	// Author Ryan Vogt
+2	//An implmentation of the jarvis algorithm to find the convex hull from a set of points P
+3	//to compile: to compile:	gcc -Wall -std=c99 -o point points.c
+bf97d3f6 » MathematicianVogt 
+2014-03-03 6		4	#include <stdio.h>
+5	#include <string.h>
+8615feec » MathematicianVogt 
+2014-03-03 5		6	#include "points.h"
+bf97d3f6 » MathematicianVogt 
+2014-03-03 6		7	#include <stdlib.h>
+8	#include <ctype.h>
+8615feec » MathematicianVogt 
+2014-03-03 5		9	
+10	
+11	
+bf97d3f6 » MathematicianVogt 
+2014-03-03 6		12	//
+13	void displayConvexPoints(struct Point points[], int numPoints){
+14	
+15		printf("Convex Hull:\n");
+16		for(int i=0; i<numPoints; i++)
+17		{
+18			struct Point currentPointToShow=points[i];
+19			printf("%c: (%d,%d)\n",currentPointToShow.label,currentPointToShow.x,currentPointToShow.y);
+20	
+21	
+22		}
+23	
+7d34acf9 » MathematicianVogt 
+2014-03-03 10		24	printf("dsffdsfsdfHERE");
+bf97d3f6 » MathematicianVogt 
+2014-03-03 6		25	
+26	}
+8615feec » MathematicianVogt 
+2014-03-03 5		27	//A method that does the jarvis algorithm. Takes a set of points  and number of points
+28	//in this set that are valid, find the points in this set and add them to convexHull
+29	//@param points, the set of points, a subset of these points will be the convex hull
+30	//@param numPoints, the number of points in points that are valid
+31	//@param convexHull, this will be manipualted from empty to containing the complex hull
+bf97d3f6 » MathematicianVogt 
+2014-03-03 6		32	int jarvis(struct Point points[], struct Point convexHull[],int numPoints)
+8615feec » MathematicianVogt 
+2014-03-03 5		33	{
+e65e435e » MathematicianVogt 
+2014-03-03 9		34		
+1dca7690 » MathematicianVogt 
+2014-03-03 7		35		struct Point pointOnHull=leftmostPoint(points,numPoints);
+bf97d3f6 » MathematicianVogt 
+2014-03-03 6		36		int i=0;
+1dca7690 » MathematicianVogt 
+2014-03-03 7		37		struct Point endPoint;
+f03778bf » MathematicianVogt 
+2014-03-03 8		38		endPoint.x=points[0].x;
+39		endPoint.y=points[0].y;
+40		convexHull[i]=pointOnHull;
+41		while(!equal(endPoint,convexHull[0]))
+42		{
+cb4da237 » MathematicianVogt 
+2014-03-03 11		43		
+44	
+45		
+f03778bf » MathematicianVogt 
+2014-03-03 8		46		convexHull[i]=pointOnHull;
+47		displayPoint(convexHull[i]);
+cb4da237 » MathematicianVogt 
+2014-03-03 11		48		
+1dca7690 » MathematicianVogt 
+2014-03-03 7		49		endPoint=points[0];
+f03778bf » MathematicianVogt 
+2014-03-03 8		50		for(int j=1; j<numPoints; j++)
+1dca7690 » MathematicianVogt 
+2014-03-03 7		51		{
+52	
+f03778bf » MathematicianVogt 
+2014-03-03 8		53			if(equal(endPoint,pointOnHull) || (ccw(convexHull[i], endPoint,points[j])>0))
+1dca7690 » MathematicianVogt 
+2014-03-03 7		54			{
+cb4da237 » MathematicianVogt 
+2014-03-03 11		55				//displayPoint(points[i]);
+f03778bf » MathematicianVogt 
+2014-03-03 8		56				endPoint=points[j];
+1dca7690 » MathematicianVogt 
+2014-03-03 7		57	
+58			}
+cb4da237 » MathematicianVogt 
+2014-03-03 11		59			
+1dca7690 » MathematicianVogt 
+2014-03-03 7		60	
+61		}
+cb4da237 » MathematicianVogt 
+2014-03-03 11		62		i++;
+63		pointOnHull=endPoint;
+64		
+f03778bf » MathematicianVogt 
+2014-03-03 8		65		}
+66		
+1dca7690 » MathematicianVogt 
+2014-03-03 7		67	
+68	
+bf97d3f6 » MathematicianVogt 
+2014-03-03 6		69		return 0;
+8615feec » MathematicianVogt 
+2014-03-03 5		70	
+71	
+72	
+73	
+74	
+75	
+76	
+77	
+78	
+79	}
+80	
+81	int main(void)
+82	{
+83	struct Point jarvisPoints[MAX_POINTS];
+e65e435e » MathematicianVogt 
+2014-03-03 9		84	printf("HERTfsfE1");
+85	int numberOfjarvisPoints=readPoints(jarvisPoints);
+86	printf("HERTfsfE2");
+87	displayPoints(jarvisPoints,numberOfjarvisPoints);
+88	printf("HERTfsfE3");
+89	struct Point convexHullSet[numberOfjarvisPoints];
+90	printf("HERTfsfE4");
+91	int numberOfConvexPoints=jarvis(jarvisPoints,convexHullSet,numberOfjarvisPoints);
+f03778bf » MathematicianVogt 
+2014-03-03 8		92	//displayConvexPoints(convexHullSet,numberOfConvexPoints);
+8615feec » MathematicianVogt 
+2014-03-03 5		93	
+94	
+95	
+96	
+97	}

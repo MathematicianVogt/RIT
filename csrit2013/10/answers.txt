@@ -1,0 +1,6 @@
+Ryan Vogt
+
+1)16
+2)0, so proud.
+3) Different hash functions does not increase or decrease the size at all, the size change is only dependant on how many elements are being put in
+every time 75% capactiy is reached the table will increase, regardless of hash function.

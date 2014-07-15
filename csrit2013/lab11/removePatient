@@ -1,0 +1,16 @@
+int pos=patientNo-1000;
+    	if(pos<0 || patientNo>basePatientNumber)
+    	{
+    		
+    		throw new NoSuchPatientException("removePatient()");
+    		
+    	}
+    	else
+    	{
+    		
+    		inactivePatients.add(activePatients.get(pos));
+    		activePatients.remove(pos);
+    		
+    	}
+    }
+

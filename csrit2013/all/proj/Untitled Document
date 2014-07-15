@@ -1,0 +1,25 @@
+rhv5251@stones:~/Desktop/proj$ try csx-grd project1-1 Testing.txt Battleship.java BattleShipCell.java Cell.java GameCommands.java Ship.java WaterCell.java
+Copying files...done
+
+ON-TIME submission of project1-1
+Compiling your program...
+
+Files being saved:
+BattleShipCell.java Battleship.java Cell.java GameCommands.java Ship.java Testing.txt WaterCell.java
+
+project1-1 has been submitted.
+rhv5251@stones:~/Desktop/proj$ try -q csx-grd project1-1                        
+
+project1-1 submitted ON-TIME
+Submission contains the following file(s):
+-rw-rw-rw- 1 csx-grd csx-grd 1419 Sep 20 21:58 BattleShipCell.java
+-rw-rw-rw- 1 csx-grd csx-grd 7822 Sep 20 21:58 Battleship.java
+-rw-rw-rw- 1 csx-grd csx-grd  537 Sep 20 21:58 Cell.java
+-rw-rw-rw- 1 csx-grd csx-grd 6328 Sep 20 21:58 GameCommands.java
+-rw-rw-rw- 1 csx-grd csx-grd  690 Sep 20 21:58 Ship.java
+-rw-rw-rw- 1 csx-grd csx-grd 3867 Sep 20 21:58 Testing.txt
+-rw-rw-rw- 1 csx-grd csx-grd  945 Sep 20 21:58 WaterCell.java
+
+Would you like to see the contents of these files (y/n)? n
+rhv5251@stones:~/Desktop/proj$ 
+

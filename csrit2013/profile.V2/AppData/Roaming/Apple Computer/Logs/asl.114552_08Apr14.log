@@ -1,0 +1,70 @@
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] 
+	======================
+	 APSDaemon.exe begins
+	======================
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] parent process: 7092 "runonce.exe"
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] main thread 5904
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] command line: "C:\Program Files (x86)\Common Files\Apple\Apple Application Support\APSDaemon.exe" 
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] ALLUSERSPROFILE=C:\ProgramData
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] APPDATA=C:\Users\rhv5251\AppData\Roaming
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] CG_BIN64_PATH=C:\Program Files (x86)\NVIDIA Corporation\Cg\bin.x64
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] CG_BIN_PATH=C:\Program Files (x86)\NVIDIA Corporation\Cg\bin
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] CG_INC_PATH=C:\Program Files (x86)\NVIDIA Corporation\Cg\include
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] CG_LIB64_PATH=C:\Program Files (x86)\NVIDIA Corporation\Cg\lib.x64
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] CG_LIB_PATH=C:\Program Files (x86)\NVIDIA Corporation\Cg\lib
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] CLASSPATH=.;C:\Program Files (x86)\QuickTime\QTSystem\QTJava.zip
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] CommonProgramFiles=C:\Program Files (x86)\Common Files
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] CommonProgramW6432=C:\Program Files\Common Files
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] COMPUTERNAME=ZHAAN
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] ComSpec=C:\Windows\system32\cmd.exe
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] DEFLOGDIR=C:\ProgramData\McAfee\DesktopProtection
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] DevIL=C:\Program Files\DevIL-1.7.8\devil-1.7.8\include\IL
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] DXSDK_DIR=C:\Program Files (x86)\Microsoft DirectX SDK (February 2010)\
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] EMACS_BUILD=C:\emacs\emacs24.3
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] FP_NO_HOST_CHECK=NO
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] HOMEDRIVE=h:
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] HOMEPATH=\
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] HOMESHARE=\\gondor\rhv5251
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] LOCALAPPDATA=C:\Users\rhv5251\AppData\Local
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] LOGONSERVER=\\GONDOR
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] NUMBER_OF_PROCESSORS=4
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] OPENCV_DIR=c:\OpenCV\x64\vc11
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] OS=Windows_NT
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] Path=C:\Perl64\site\bin;C:\Perl64\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\TortoiseSVN\bin;C:\emacs\emacs24.3\bin;C:\Program Files\jEdit;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files (x86)\Windows Kits\8.0\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\CMake 2.8\bin;C:\Program Files\MATLAB\R2012b\runtime\win64;C:\Program Files\MATLAB\R2012b\bin;C:\Program Files\Java\jdk1.7.0_25\bin;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\freeglut\bin\x64;C:\Program Files (x86)\Pixie\bin;C:\Program Files (x86)\NVIDIA Corporation\Cg\bin;C:\Program Files (x86)\NVIDIA Corporation\Cg\bin.x64
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] PIXIEHOME=C:\Program Files (x86)\Pixie
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] PROCESSOR_ARCHITECTURE=x86
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] PROCESSOR_ARCHITEW6432=AMD64
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 45 Stepping 7, GenuineIntel
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] PROCESSOR_LEVEL=6
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] PROCESSOR_REVISION=2d07
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] ProgramData=C:\ProgramData
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] ProgramFiles=C:\Program Files (x86)
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] ProgramFiles(x86)=C:\Program Files (x86)
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] ProgramW6432=C:\Program Files
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] PSModulePath=C:\Windows\system32\WindowsPowerShell\v1.0\Modules\
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] PUBLIC=C:\Users\Public
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] QTJAVA=C:\Program Files (x86)\QuickTime\QTSystem\QTJava.zip
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] RMANTREE=C:\Program Files\Pixar\RenderManProServer-16.5\
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] SESSIONNAME=Console
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] SHADERS=%PIXIEHOME%\shaders
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] SOIL=c:\SOIL\src
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] SystemDrive=C:
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] SystemRoot=C:\Windows
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] TEMP=C:\Users\rhv5251\AppData\Local\Temp
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] TMP=C:\Users\rhv5251\AppData\Local\Temp
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] USERDOMAIN=CSLAB
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] USERNAME=rhv5251
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] USERPROFILE=C:\Users\rhv5251
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] VS110COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\Tools\
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] VSEDEFLOGDIR=C:\ProgramData\McAfee\DesktopProtection
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] windir=C:\Windows
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] windows_tracing_flags=3
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] windows_tracing_logfile=C:\BVTBin\Tests\installpackage\csilogfile.log
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] XNAGSShared=C:\Program Files (x86)\Common Files\Microsoft Shared\XNA\
+[2856 @ Tue Apr 08 11:45:52 2014] [YSLoader APSDaemon.exe] XNAGSv4=C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\
+[2856 @ Tue Apr 08 11:45:58 2014] [YSLoader APSDaemon.exe] 
+	====================
+	 APSDaemon.exe ends
+	====================

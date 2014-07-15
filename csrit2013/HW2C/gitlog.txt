@@ -1,0 +1,124 @@
+dc743ccb » MathematicianVogt 
+2014-02-10 FINISHED WORKING		1	
+2	
+3	//@author Ryan Vogt
+4	//A simple program that will bannerize
+5	//A phase bordered with a specific character
+6	#include <string.h>
+7	#include <stdio.h>
+8	#include <stdlib.h>
+9	
+10	int makeBanner(char borderChar, char *myString[], int numberOfargc)
+11	{
+12		
+13		int numberOfchar=3;
+94f66c53 » MathematicianVogt 
+2014-02-11 finish1		14		
+dc743ccb » MathematicianVogt 
+2014-02-10 FINISHED WORKING		15		for(int j=1; j<numberOfargc; j++)
+16		{
+17	
+18			numberOfchar=numberOfchar+strlen(myString[j])+1;
+19	
+20		}
+21		
+94f66c53 » MathematicianVogt 
+2014-02-11 finish1		22		//top of banner
+dc743ccb » MathematicianVogt 
+2014-02-10 FINISHED WORKING		23		for(int k=0; k<numberOfchar; k++)
+24		{
+25	
+26			printf("%c", borderChar);
+27	
+28	
+29		}
+30		printf("%s","\n" );
+31	
+32		printf("%c",borderChar );
+33		printf("%c", ' ' );
+94f66c53 » MathematicianVogt 
+2014-02-11 finish1		34		//phase itself
+dc743ccb » MathematicianVogt 
+2014-02-10 FINISHED WORKING		35		for(int i=1; i<numberOfargc; i++)
+36		{
+37	
+38			printf("%s",myString[i]);
+39			printf("%c", ' ');
+40		}
+41		printf("%c",borderChar );
+42		printf("%c", ' ' );
+43		printf("%s","\n" );
+94f66c53 » MathematicianVogt 
+2014-02-11 finish1		44		//bottom of banner
+dc743ccb » MathematicianVogt 
+2014-02-10 FINISHED WORKING		45		for(int k=0; k<numberOfchar; k++)
+46		{
+47	
+48			printf("%c", borderChar);
+49	
+50	
+51		}
+52		printf("%s","\n" );
+53	
+94f66c53 » MathematicianVogt 
+2014-02-11 finish1		54		//banner succesfully made
+dc743ccb » MathematicianVogt 
+2014-02-10 FINISHED WORKING		55		return EXIT_SUCCESS;
+56	
+57	}
+58	
+94f66c53 » MathematicianVogt 
+2014-02-11 finish1		59	//@param argc the number of arguements passed
+60	//@param argv, the array containing the arguments passed
+dc743ccb » MathematicianVogt 
+2014-02-10 FINISHED WORKING		61	int main(int argc, char *argv[])
+62	 {
+63	 	
+94f66c53 » MathematicianVogt 
+2014-02-11 finish1		64	 	//Check if atleast two arguments are passed
+65	 	//If so prompt the user to give a character to make the banner
+dc743ccb » MathematicianVogt 
+2014-02-10 FINISHED WORKING		66	 	if(argc<2)
+67	 	{
+68	 	printf("%s", "usage: bannerize text to bannerize...\n");
+69	 	}
+70	 	else
+71	 	{
+94f66c53 » MathematicianVogt 
+2014-02-11 finish1		72	 		char myBorderChar;
+73	
+74	
+dc743ccb » MathematicianVogt 
+2014-02-10 FINISHED WORKING		75	 		printf("%s","Enter the character for the border: ");
+94f66c53 » MathematicianVogt 
+2014-02-11 finish1		76	 		while((myBorderChar=getchar())==' ')
+77	 		{	
+78	 			
+79	
+80	
+81	 			if(myBorderChar!=' ')
+82	 			{
+83	
+84	 
+85	 				break;
+86	 			}
+87	
+88	
+89	 		}
+90	 		if(myBorderChar==EOF)
+91	 			{
+92	 				//banner cannot be made, program has been quit with CTRL D
+93	 				printf("%s", "");
+94	 				exit(EXIT_FAILURE);
+95	
+96	 			}
+97	 		
+dc743ccb » MathematicianVogt 
+2014-02-10 FINISHED WORKING		98	 		makeBanner(myBorderChar,argv,argc);
+99	
+100	 	}
+94f66c53 » MathematicianVogt 
+2014-02-11 finish1		101	 	//Banner was not made successfully
+dc743ccb » MathematicianVogt 
+2014-02-10 FINISHED WORKING		102	 	return EXIT_FAILURE;
+103	

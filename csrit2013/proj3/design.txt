@@ -1,0 +1,35 @@
+CSX Puzzle Solver, Project Part 2:  Water & Clock
+
+Name:Ryan Vogt
+
+
+1. Explain how your common solver is able to work with both puzzles.
+    First i looked at what was common between the two puzzles, both will have different configerations
+    based on what goal is being sought. They will have neighbors both in their own regard, for the clock they will be digits
+    while for a water puzzle they will be configerations of jugs.Since each puzzle implements the puzzle interface each has a getgoal getstart and get neighbor method   which results in the ability for a solver to solve a puzzle through its different configerations to an eventual goal. The common solver takes into account that both has configerations
+    of possible results, the solver will return a configeration that contains the goal of the puzzle, which is determined by each puzzles
+    definition of its goal.
+
+
+
+2. What was the type of configuration you used for each puzzle?
+    For both I implements arraylist of an arraylist of integers. With this perspective, each element in the arraylist of integers would be a 
+    configeration towards a possible solution, each additonal step to gain a solution would go into this arraylist, this would then be returned if
+    when in one step a solution was located. 
+
+
+
+3. Starting with the Puzzle interface from part 1, what were the major
+changes and additions you had to make?
+
+    Only change i had to make was for a clock it made sense that the neighbors would be integers,
+    while for a water puzzle a neighbor would be a collection of integers, this idea led to the abstraction to using an arraylist
+    cause it would work for the water puzzle collection, but also be fine for the clock puzzle which would just be the arraylist of 
+    size 1
+
+4. What problems, if any, did you encounter when re-designing your 
+project from part 1?
+
+    I found that i did not make the solver generic enough, i made it so it could solve puzzles that were only clock that, and not puzzles in general.
+    From this in addition there wasnt an issue with unsolvable clock puzzles because the possibilites were so limited. a Water puzzle on the otherhand needed to use
+    memoization in order to make sure no solution exists. What i learned overall was the important of writing generic programs, having a flexible mind when it comes to design. Additionally the importence of writting a good solution first so that more work will not be done later. If i wrote a generic puzzle solver in the begining then i shouldnt have had to put so much time into getting the next puzzle to work. From my implementation now, i forsee that the next part of the project will take less time then it took this time cause i have a mostly generic puzzle solver so the next puzzle will take less time to solve cause the solver is generic as it is. 

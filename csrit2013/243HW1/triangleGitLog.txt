@@ -1,0 +1,94 @@
+ b2f3e8a0 » MathematicianVogt
+2014-02-03 Finished 		1 	//
+		2 	// File: triangle.c
+		3 	//
+		4 	// A program to print out multiple triangles "right-up" triangles.
+		5 	// of the form
+		6 	// *
+		7 	// **
+		8 	// ***
+		9 	// ****
+		10 	//
+		11 	// @author TODO_AUTHOR_ID_ : TODO_AUTHOR_FULL_NAME_
+		12 	//
+		13 	// // // // // // // // // // // // // // // // // // // // // // // //
+		14 	
+		15 	// TODO_ADD_#INCLUDES_ HERE
+		16 	#include <stdio.h>
+		17 	#include <string.h>
+		18 	
+		19 	/**
+		20 	* Function: drawTriangle
+		21 	*
+		22 	* Description: function to draw a triangle whose height/width is "size"
+		23 	*
+		24 	* @param size the size of the triangle to draw
+		25 	*/
+		26 	// TODO_WRITE_DRAWTRIANGLE_FUNCTION HERE
+		27 	int drawTriangle(int size)
+		28 	{
+		29 	char dot='*';
+		30 	char space=' ';
+		31 	for(int i=0; i<size; i++)
+		32 	{
+		33 	
+		34 	for(int k=0; k<size; k++)
+		35 	{
+		36 	
+		37 	int blankspace=size-i-1;
+		38 	if(k<blankspace)
+		39 	{
+		40 	
+		41 	printf("%c",space);
+		42 	
+		43 	
+		44 	}
+		45 	if(k>=blankspace)
+		46 	{
+		47 	
+		48 	
+		49 	printf("%c",dot);
+		50 	}
+		51 	
+		52 	
+		53 	}
+		54 	printf("%s","\n");
+		55 	
+		56 	
+		57 	}
+		58 	
+		59 	return 0;
+		60 	}
+		61 	
+		62 	
+		63 	
+		64 	
+		65 	
+		66 	
+		67 	/**
+		68 	* Function: main
+		69 	*
+		70 	* Description: program to draw 3 triangles of size 2, 4, and 6.
+		71 	*
+		72 	* @author Ryan Vogt
+		73 	*
+		74 	* @param argc number of command line arguments, including program name
+		75 	* @param argv supplied command line arguments, including program name
+		76 	* @returns errorCode error Code; EXIT_SUCCESS if no error
+		77 	*/
+		78 	// TODO_WRITE_MAIN_FUNCTION HERE
+		79 	int main(int argc, char *argv[])
+		80 	{
+		81 	drawTriangle(2);
+		82 	drawTriangle(4);
+		83 	drawTriangle(6);
+		84 	
+		85 	
+		86 	}
+		87 	
+		88 	// // // // // // // // // // // // // // // // // // // // // // // //
+		89 	// Version:
+		90 	// $Id$
+		91 	//
+		92 	// Revisions:
+		93 	// $Log$ 

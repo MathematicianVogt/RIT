@@ -1,0 +1,52 @@
+head	1.1;
+access;
+symbols;
+locks
+	rhv5251:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2013.11.21.23.51.13;	author rhv5251;	state Exp;
+branches;
+next	;
+
+
+desc
+@changes for proj 3
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@import java.util.ArrayList;
+
+/*
+ * Puzzle.java
+ *
+ * Version:
+ *     $Id$
+ *
+ * Revisions:
+ *     $Log$
+ */
+ 
+public interface Puzzle<T> {
+
+	
+	 public int getGoal(); 
+     //Get the goal config for this puzzle.
+	 public java.util.ArrayList<T>getNeighbors(T config);
+     //For an incoming config, generate and return all direct neighbors to this config.
+	 public int getStart();
+     //Get the starting config for this puzzle.	
+	 public String showResults(ArrayList<T> input);
+	
+	
+	
+	
+}
+@

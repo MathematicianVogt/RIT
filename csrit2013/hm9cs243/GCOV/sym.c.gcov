@@ -1,0 +1,174 @@
+        -:    0:Source:sym.c
+        -:    0:Graph:sym.gcno
+        -:    0:Data:sym.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:/// A symbol table module.
+        -:    2:///
+        -:    3:/// Basic compile:	gcc -Wall -ggdb -std=c99 -o sym sym.c
+        -:    4://
+        -:    5:#define _GNU_SOURCE
+        -:    6:
+        -:    7:#include <assert.h>
+        -:    8:#include <ctype.h>
+        -:    9:#include <string.h>
+        -:   10:#include <stdio.h>
+        -:   11:#include <stdlib.h>
+        -:   12:#include <unistd.h>
+        -:   13:#include <stdbool.h>
+        -:   14:
+        -:   15:/// The number of characters in the input buffer
+        -:   16:#define	BUFFER_SIZE	32
+        -:   17:
+        -:   18:#define	CHUNK_SIZE	100
+        -:   19:
+        -:   20:#define	MAX_NAME	20
+        -:   21:
+        -:   22:/// a basic symbol table entry
+        -:   23://
+        -:   24:typedef
+        -:   25:struct Symbol_S {
+        -:   26:	int value;
+        -:   27:	char name[MAX_NAME];
+        -:   28:} SymTab_T;
+        -:   29:
+        -:   30:/// The symbol table itself
+        -:   31://
+        -:   32:static SymTab_T * table = NULL;
+        -:   33:
+        -:   34:/// the next available slot in the symbol table
+        -:   35://
+        -:   36:static int next = 0;
+        -:   37:
+        -:   38:/// size of the amount of allocated memory
+        -:   39://
+        -:   40:static int size = CHUNK_SIZE;
+        -:   41:
+        -:   42:/// resize the amount of allocated memory
+        -:   43:/// side effect: size doubles
+        -:   44://
+        9:   45:static SymTab_T * resize( SymTab_T * ptr, int oldsize ) {
+        9:   46:	size = size << 1;
+        9:   47:	SymTab_T * newtab = calloc( size , sizeof( SymTab_T ) );
+        9:   48:	assert( newtab );
+        -:   49:	// copy every entry of old table to newtab
+     4609:   50:	for ( int j = 0; j < oldsize ; ++j ) {
+     4600:   51:		newtab[j] = table[j];
+        -:   52:	}
+        9:   53:	free( table);
+        9:   54:	table = NULL;
+        9:   55:	return newtab;
+        -:   56:}
+        -:   57:
+        -:   58:/// add_to_table() - add a name to the symbol table
+        -:   59:///
+        -:   60:/// parameters:
+        -:   61:///	name	the name of the new symbol
+        -:   62:///	value	the data associated with this symbol
+        -:   63:///
+        -:   64:/// returns:
+        -:   65:///	'true' if the symbol was successfully entered in the table
+        -:   66:///	'false' if there was an error
+        -:   67://
+     3242:   68:bool add_to_table( char name[], int value ) {
+        -:   69:	int i;
+        -:   70:
+     3242:   71:	if ( name[0] == '\0' ) {
+    #####:   72:		return false;
+        -:   73:	}
+     3242:   74:	if ( next >= size ) {
+        9:   75:		table = resize( table, size ); // side effect: size doubles
+        9:   76:		assert( table );
+        -:   77:	}
+        -:   78:	//
+        -:   79:	// Copy the data into the current slot in the table
+        -:   80:	//
+     3242:   81:	table[next].value = value;
+     3242:   82:	i = 0;
+    24784:   83:	while( (table[next].name[i] = name[i]) ) {
+    18300:   84:		++i;
+        -:   85:	}
+        -:   86:	//
+        -:   87:	// Move to the next available slot
+        -:   88:	//
+     3242:   89:	++next;
+        -:   90:
+     3242:   91:	return( true );
+        -:   92:}
+        -:   93:
+        4:   94:int main( void ) {
+        -:   95:	char namebuf[BUFFER_SIZE];
+        -:   96:	char valbuf[BUFFER_SIZE];
+        -:   97:	int i;
+        -:   98:	bool prompt;
+        -:   99:
+        -:  100:	// allocate and clear memory
+        4:  101:	table = calloc( size , sizeof( SymTab_T ) );
+        4:  102:	assert( table );
+        -:  103:
+        -:  104:	// prompt is true only if the standard input
+        -:  105:	// is coming from a terminal
+        -:  106:
+        4:  107:	prompt = isatty( fileno(stdin) );
+        -:  108:
+        -:  109:	// Begin by reading name + value pairs and 
+        -:  110:	// adding them to the table
+        -:  111:
+        4:  112:	int count = 0;
+        -:  113:	while( true ) {
+        -:  114:
+        -:  115:		// Read the next name; if the user typed
+        -:  116:		// control-D, we'll see that as EOF
+        -:  117:
+     3246:  118:		if( prompt ) {
+    #####:  119:			printf( "Enter a name (control-D to stop): " );
+        -:  120:		}
+     3246:  121:		if( fgets(namebuf,BUFFER_SIZE,stdin) == NULL ) {
+        3:  122:			break;
+        -:  123:		}
+        -:  124:
+        -:  125:		// Locate the newline character in the buffer,
+        -:  126:		// and replace it with a NUL character
+        -:  127:
+     3243:  128:		i = 0;
+    24786:  129:		while( namebuf[i] != '\0' && namebuf[i] != '\n' ) {
+    18300:  130:			++i;
+        -:  131:		}
+        -:  132:
+     3243:  133:		if( namebuf[i] == '\n'  ) {
+     3243:  134:			namebuf[i] = '\0';
+        -:  135:		}
+        -:  136:
+        -:  137:		// Read the associated number and check for EOF
+        -:  138:
+     3243:  139:		if( prompt ) {
+    #####:  140:			printf( "Enter a number: " );
+        -:  141:		}
+     3243:  142:		if( fgets(valbuf,BUFFER_SIZE,stdin) == NULL ) {
+        1:  143:			break;
+        -:  144:		}
+        -:  145:
+     3242:  146:		if ( strlen( namebuf ) >= MAX_NAME ) {
+    #####:  147:			continue;                  // skip overlong words
+        -:  148:		}
+        -:  149:
+        -:  150:		// Add this name+value pair to the table
+        -:  151:
+     3242:  152:		if( ! add_to_table(namebuf,atoi(valbuf)) ) {
+    #####:  153:			continue;
+        -:  154:		}
+     3242:  155:		++count;
+     3242:  156:	}
+        -:  157:
+        -:  158:	// All done - dump the symbol table
+        -:  159:
+        4:  160:	printf( "\n\nNumber of entries in symbol table: %d\n", count );
+        4:  161:	printf( "Contents of symbol table:\n" );
+        -:  162:
+     3246:  163:	for( i = 0; i < next; ++i ) {
+     3242:  164:		printf( "%3d:  '%s', %d\n", i, table[i].name, table[i].value );
+        -:  165:	}
+        -:  166:
+        4:  167:	free( table );
+        4:  168:	return( 0 );
+        -:  169:}

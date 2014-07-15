@@ -1,0 +1,129 @@
+Homework: C code Performance Analysis with gcov 
+
+Name:Ryan Vogt
+
+These questions deal with the program in "sym.c".
+
+Instructions
+------------
+
+a. Read this whole document before doing anything else.
+b. Save a copy of this file.
+c. Edit your copy and add your answers BELOW the word "ANSWER".
+	====================================================
+	DO NOT REMOVE THE LINE CONTAINING THE WORD "ANSWER".
+	====================================================
+d. Research to discover answers to the basic questions.
+	Hint: the man pages are useful.
+e. Commands to run are identified with a '==> ' prefix.
+d. Follow the sub-instructions in order; see inside the lines between the '---'.
+e. Do not execute the commands out of order.
+
+
+Questions -- 25 points
+---------
+
+1. (2 points)  What are the gcc compiler flags required to use the gcov tool?
+ANSWER:
+-fprofile-arcs -ftest-coverage
+
+------------
+Add the flags to the header.mak, create a Makefile with gmakemake and run make.
+------------
+
+
+2. (2 points)  What files does COMPILING sym.c produce when you use the flags?
+ANSWER:
+the excutable sym and sym.gcno
+
+------------
+Run this command:
+	==> gcov sym.c
+------------
+
+
+3. (1 point)  What coverage results do you get?
+ANSWER:
+sym.gcda:cannot open data file, assuming not executed
+File 'sym.c'
+Lines executed:0.00% of 51
+sym.c:creating 'sym.c.gcov'
+
+4. (2 points)  What new files did executing the gcov command produce?
+ANSWER:
+sym.c.gcov
+
+------------
+Run this command sequence:
+	==> sym < data1 
+	==> gcov sym.c
+------------
+
+5. (2 points)  What coverage do you get now?
+ANSWER:
+File 'sym.c'
+Lines executed:66.67% of 51
+sym.c:creating 'sym.c.gcov'
+
+
+6. (2 points)  What file(s) were changed/created as a result of
+ANSWER:
+Just sym.gcda was created and sym.gcno changed
+
+7. (2 points)  Why did executing the gcov command need to change the file(s)?
+ANSWER:
+In order to conver more lines of code
+------------
+It is not always possible to achieve 100% code coverage
+with one test. It is possible to define a set of tests (a test suite)
+whose execution will produce 100% code coverage of sym.c.
+------------
+
+
+8. (4 points)  What test cases are needed to achieve 100% code coverage?
+	Use the following table as a template to complete.
+
+	Test Case#:	What This Case Tests
+ANSWER:
+		0	Use data 1 to get 66% use
+		1	Use data 2 to get 88% use
+		2	use data 3 with 7000 elements to get 100%
+		...	ADD MORE IF NEEDED
+
+
+
+9. (4 points)  What command sequence is necessary to run your test suite
+	to calculate its code coverage and achieve 100% coverage?
+
+	Your answer needs to account for the fact that each 
+    	run of the program produces updates to files used by gcov, AND
+	that prior tests may affect the current code coverage analysis.
+
+	There will be multiple steps; be sure to list them in order.
+ANSWER:
+run sym with data containing 7000 elements
+run gcov command
+get converage of 100%
+
+------------
+Now create actual, runnable test cases to produce 100% code coverage.
+Create different test file inputs that you need to run your test cases.
+Use a shell script or simply hand-enter test commands and paste results below.
+------------
+
+
+10. (4 points)  What is the coverage achieved after running each of your tests?
+
+1#
+File 'sym.c'
+Lines executed:66.84% of 51
+sym.c:creating 'sym.c.gcov'
+
+#2File 'sym.c'
+Lines executed:90.20% of 51
+sym.c:creating 'sym.c.gcov'
+
+#3	File 'sym.c'
+Lines executed:100.00% of 51
+sym.c:creating 'sym.c.gcov'
+

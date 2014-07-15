@@ -1,0 +1,14 @@
+Name:
+
+Question 1:
+  What is the imbalance measurement value for the "simple" string
+  hash function}?
+
+Question 2: 
+  What is the imbalance value for your custom hash function?
+
+
+Question 3: 
+How do different hashing functions affect the number of
+times that the hash table must resize?
+
